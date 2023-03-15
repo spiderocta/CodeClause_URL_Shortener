@@ -8,7 +8,25 @@
   <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
   <title>Home - CodeClause URL Shortener</title>
 </head>
-<body>
-    test
-</body>
+  <body>
+    <div class="container">
+      <BR/><BR/><BR/>
+      <div class="card">
+        <div class="card-header">CodeClause URL Shortener</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="urlinput">Full URL:</label>
+              <input type="text" id="urlinput" class="form-control" name="urlinput" maxlength="255"/>
+            </div>
+            <div class="form-group">
+              <label for="shorturltext">Your Short URL:</label>
+              <input type="text" id="shorturltext" class="form-control" name="shorturltext" maxlength="255"/>
+            </div>
+            <button type="button" class="btn btn-primary">Shorten URL</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
