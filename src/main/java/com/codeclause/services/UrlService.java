@@ -1,5 +1,7 @@
 package com.codeclause.services;
 
+import com.codeclause.dtos.LongUrl;
+import com.codeclause.entity.Url;
 import com.codeclause.repository.UrlRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,15 @@ public class UrlService {
         this.urlRepository = urlRepository;
         this.handler = handler;
     }
-    
+    public String convertToShortUrl(LongUrl request) {
+        var url = new Url();
+        url.setLongUrl(request.getLongUrl());
+        url.setExpiresDate(request.getExpiresDate());
+        url.setCreatedDate(new Date());
+        var entity = urlRepository.save(url);
+
+        return handler.encode(entity.getId());
+    }
     public String getOriginalUrl(String shortUrl) {
         var id = handler.decode(shortUrl);
         var entity = urlRepository.findById(id)
